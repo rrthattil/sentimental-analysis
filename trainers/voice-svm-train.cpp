@@ -18,7 +18,7 @@ using namespace essentia;
 using namespace essentia::standard;
 int main()
 {
-    string voices_path="../data/trainer/ckvoices/",emotion_labels[7]={"anger","disgust","fear","happy","nuetral","sad","surprise"},ext=".wav",file_path;
+    string voices_path="../data/voices/",emotion_labels[7]={"anger","disgust","fear","happy","nuetral","sad","surprise"},ext=".wav",file_path;
     int file_no[7]={62,58,60,60,120,60,60},index=0;
     float feature_matrix[480][2],label_matrix[480];
     for(int i=0;i<7;i++)
@@ -106,7 +106,7 @@ int main()
        Ptr<TrainData> td = TrainData::create(data, ROW_SAMPLE, labels);
        for(int i=0;i<10;i++)
 	   mymodel->train(td);
-       string modelname="../data/classifiers/moods/"+emotion_labels[i]+".xml";
+       string modelname="../models/voices/"+emotion_labels[i]+".xml";
        mymodel->save(modelname);
    }
 } 

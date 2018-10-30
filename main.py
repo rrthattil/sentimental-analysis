@@ -14,7 +14,7 @@ def record():
     RATE = 44100
     CHUNK = 1024
     RECORD_SECONDS = 7
-    WAVE_OUTPUT_FILENAME = "../data/temp/voice.wav"
+    WAVE_OUTPUT_FILENAME = "./data/temp/voice.wav"
     audio = pyaudio.PyAudio()
     stream = audio.open(format=FORMAT, channels=CHANNELS,rate=RATE,input=True,frames_per_buffer=CHUNK)
     frames = [] 
@@ -37,7 +37,7 @@ def capture():
 def face():
     espeak.synth("Smile Please")
     capture()
-    f=subprocess.call(['./face-svm-predict'])
+    f=subprocess.call(['./predictors/face-svm-predict'])
     if f==0:
         espeak.synth("you seem angry")
     elif f==1:
@@ -56,11 +56,11 @@ def voice():
     espeak.synth("How was your day today")
     time.sleep(4)    
     record()
-    v=subprocess.call("./voice-svm-predict")
+    v=subprocess.call("./predictors/voice-svm-predict")
     if v==0:
         espeak.synth("Well that is a good reason to be mad")
     elif v==1:
-        espeak.synth("I will try not to disgust you next")
+        espeak.synth("I will try not to disgust you next time")
     elif v==2:
         espeak.synth("Thats nice to hear")
     elif v==3:

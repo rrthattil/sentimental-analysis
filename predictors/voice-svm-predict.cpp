@@ -22,7 +22,7 @@ using namespace essentia::standard;
 float feature_matrix[2];
 int main()
 {
-   string classifier_path="../data/classifiers/moods/",emotion_labels[7]={"anger","disgust","happy","nuetral","sadness","surprise","fear"},ext=".xml",file_path="../data/temp/voice.wav";
+   string classifier_path="../models/voices/",emotion_labels[7]={"anger","disgust","happy","nuetral","sadness","surprise","fear"},ext=".xml",file_path="../data/temp/voice.wav";
    essentia::init();
    int sampleRate = 44100;
    int frameSize = 2048;

@@ -19,7 +19,7 @@ using namespace cv;
 using namespace cv::ml;
 int main()
 {
-   string landmark_path="../data/classifiers/landmarks.dat",faces_path="../data/trainer/ckfaces/",emotion_labels[6]={"anger","disgust","happy","nuetral","sadness","surprise"},ext=".png",face_path;
+   string landmark_path="../models/landmarks.dat",faces_path="../data/faces/",emotion_labels[6]={"anger","disgust","happy","nuetral","sadness","surprise"},ext=".png",face_path;
    int face_no[6]={86,87,114,80,64,88},index=0;
    float feature_matrix[519][68*2],label_matrix[519];
    float xlist[68],ylist[68],x[68],y[68],xnormal[68],ynormal[68],xmean,ymean,xsmall,ysmall,xbig,ybig;
@@ -110,7 +110,7 @@ int main()
        Ptr<TrainData> td = TrainData::create(data, ROW_SAMPLE, labels);
        for(int i=0;i<10;i++)
 	   mymodel->train(td);
-       string modelname="../data/classifiers/"+emotion_labels[i]+".xml";
+       string modelname="../models/faces"+emotion_labels[i]+".xml";
        mymodel->save(modelname);
    }
 }
